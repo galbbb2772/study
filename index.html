@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f8fa">
+<title>高三历史总复习 · 时间轴</title>
+<style>
+:root{
+ --bg:#f7f8fa;--card:#fff;--text:#15171a;--sub:#66707b;--line:#e7e9ed;
+ --soft:#f1f3f5;--ink:#111827;--shadow:0 12px 36px rgba(17,24,39,.07);
+ --r:18px;--top:70px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+button,input{font:inherit}
+button{touch-action:manipulation}
+.shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-right:1px solid var(--line);padding:24px 16px;overflow:auto;overscroll-behavior:contain}
+.logo{font-size:19px;font-weight:850;letter-spacing:-.5px;padding:0 8px}
+.logo small{display:block;font-size:11px;font-weight:600;color:#9aa1aa;letter-spacing:.08em;margin-top:5px}
+.nav{margin-top:24px;display:grid;gap:5px}
+.nav button,.era-btn{border:0;background:transparent;text-align:left;padding:10px 11px;border-radius:11px;color:#56606b;cursor:pointer}
+.nav button:hover,.nav button.active,.era-btn:hover{background:#f0f2f4;color:#111}
+.nav button.active{font-weight:750}
+.side-title{font-size:10px;letter-spacing:.15em;color:#9ba2aa;text-transform:uppercase;margin:22px 10px 7px}
+.era-btn{display:block;width:100%;font-size:12px;padding:7px 11px}
+.main{min-width:0;width:100%;max-width:1320px;margin:auto;padding:24px 30px 80px}
+.hero{background:linear-gradient(145deg,#fff,#fbfbfc);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)}
+.eyebrow{font-size:11px;letter-spacing:.13em;color:#9aa1aa;font-weight:750}
+h1{font-size:31px;line-height:1.15;letter-spacing:-1px;margin:8px 0 9px}
+.hero p{margin:0;color:var(--sub);line-height:1.75;font-size:14px}
+.stats{display:flex;gap:20px;margin-top:22px;flex-wrap:wrap}
+.stat b{font-size:20px}.stat span{display:block;font-size:11px;color:#9299a2;margin-top:2px}
+.tools{position:sticky;top:0;z-index:4;padding:12px 0;background:rgba(247,248,250,.9);backdrop-filter:blur(16px);display:flex;gap:9px;flex-wrap:wrap}
+.search{flex:1;min-width:210px;background:#fff;border:1px solid var(--line);outline:none;padding:11px 13px;border-radius:12px;transition:border .15s,box-shadow .15s}
+.search:focus{border-color:#cfd4da;box-shadow:0 0 0 4px rgba(17,24,39,.035)}
+.segment{display:flex;background:#eceff2;padding:4px;border-radius:12px}
+.segment button{border:0;background:transparent;padding:7px 10px;border-radius:8px;color:#626b75;cursor:pointer;white-space:nowrap;font-size:13px}
+.segment button.active{background:#fff;color:#111;box-shadow:0 1px 3px rgba(0,0,0,.06);font-weight:750}
+.view{display:none}.view.active{display:block;animation:fade .16s ease both}
+@keyframes fade{from{opacity:.45;transform:translateY(3px)}to{opacity:1;transform:none}}
+.group{content-visibility:auto;contain-intrinsic-size:1px 700px}
+.group-head{display:flex;align-items:end;justify-content:space-between;padding:23px 3px 10px}
+.group-head h2{font-size:19px;letter-spacing:-.35px;margin:0}
+.group-head span{font-size:11px;color:#9aa1aa}
+.timeline{position:relative;padding-left:29px}
+.timeline:before{content:"";position:absolute;left:7px;top:0;bottom:4px;width:1px;background:#dde1e5}
+.event{position:relative;background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px 16px;margin-bottom:9px;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;contain:content}
+.event:before{content:"";position:absolute;left:-27px;top:22px;width:8px;height:8px;border-radius:50%;background:#252a31;border:3px solid var(--bg)}
+.event:hover{transform:translateY(-1px);border-color:#d3d7dc;box-shadow:0 7px 22px rgba(17,24,39,.055)}
+.event:active{transform:scale(.997)}
+.e-row{display:grid;grid-template-columns:104px 1fr auto;gap:11px;align-items:start}
+.e-date{font-size:11px;color:#8f969f;padding-top:2px}
+.e-title{font-size:15px;font-weight:790;letter-spacing:-.15px}
+.e-star{font-size:11px;letter-spacing:.5px}
+.e-summary{margin:8px 0 0 115px;color:#66707b;font-size:13px;line-height:1.6}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 0 115px}
+.chip{font-size:10px;padding:4px 7px;border:1px solid #eceef0;border-radius:99px;background:#f6f7f8;color:#626b75}
+.hidden{display:none!important}
+.empty{text-align:center;color:#9aa1aa;padding:70px 10px}
+.system-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.system{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;content-visibility:auto}
+.system h3{margin:0 0 9px;font-size:15px}.system p{font-size:13px;line-height:1.75;color:#626b75;margin:0}
+.system .take{border-top:1px dashed var(--line);margin-top:11px;padding-top:11px;color:#20252a;font-weight:650}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.compare-col{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.compare-col h3{margin:0 0 12px;font-size:15px}
+.c-item{padding:10px 0;border-top:1px solid #f0f1f3}.c-item:first-of-type{border-top:0}
+.c-item b{display:block;font-size:13px}.c-item span{font-size:11px;color:#8d949d}
+.detail{position:fixed;inset:0;z-index:20;background:var(--bg);overflow:auto;transform:translateX(102%);transition:transform .22s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.detail.open{transform:none}
+.detail-top{position:sticky;top:0;z-index:2;background:rgba(247,248,250,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(231,233,237,.8)}
+.detail-bar{max-width:920px;margin:auto;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.back{border:0;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 11px;cursor:pointer}
+.detail-main{max-width:920px;margin:auto;padding:35px 20px 90px}
+.d-meta{font-size:12px;color:#8f969f;margin-bottom:8px}.d-title{font-size:32px;font-weight:870;letter-spacing:-1px;line-height:1.15;margin:0}
+.d-summary{font-size:16px;color:#59636e;line-height:1.85;margin:15px 0 25px}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.d-card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;min-width:0}
+.d-card.full{grid-column:1/-1}.d-card h3{font-size:12px;letter-spacing:.09em;color:#8c939c;margin:0 0 11px}
+.d-card p,.d-card li{font-size:14px;line-height:1.8;color:#353b43}
+.d-card p{margin:0}.d-card ul{margin:0;padding-left:18px}
+.keyword-wrap{display:flex;gap:7px;flex-wrap:wrap}
+.keyword{background:#111827;color:#fff;border-radius:999px;padding:6px 9px;font-size:11px}
+.linkline{display:flex;gap:6px;flex-wrap:wrap}
+.linkpill{background:#f2f4f6;border:1px solid #e8eaed;border-radius:9px;padding:7px 9px;font-size:12px;color:#414952}
+.fastbox{background:#111827;color:#fff!important;border:0}.fastbox h3{color:#aeb6c0}.fastbox p{color:#fff;font-size:15px;font-weight:650}
+.progress{position:fixed;left:0;top:0;height:2px;background:#111827;z-index:50;width:0}
+.mobile-tabs{display:none}
+@media(max-width:820px){
+ .shell{display:block}.side{display:none}.main{padding:12px 12px 90px}.hero{padding:22px 17px;border-radius:19px}
+ h1{font-size:26px}.tools{top:0;padding:9px 0}.search{width:100%;flex-basis:100%}
+ .e-row{grid-template-columns:86px 1fr auto}.e-summary,.chips{margin-left:97px}
+ .system-grid,.d-grid,.compare-grid{grid-template-columns:1fr}.d-card.full{grid-column:auto}
+ .d-title{font-size:28px}.detail-main{padding:25px 14px 80px}.detail-bar{padding:0 14px}
+ .mobile-tabs{position:fixed;display:grid;grid-template-columns:repeat(3,1fr);left:10px;right:10px;bottom:10px;z-index:8;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:15px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+ .mobile-tabs button{border:0;background:transparent;border-radius:10px;padding:9px 5px;font-size:12px;color:#69727c}
+ .mobile-tabs button.active{background:#f0f2f4;color:#111;font-weight:750}
+}
+@media(max-width:520px){
+ .e-row{grid-template-columns:76px 1fr auto;gap:8px}.e-summary,.chips{margin-left:84px}
+ .segment button{padding:7px 8px}.hero p br{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="shell">
+<aside class="side">
+ <div class="logo">历史总复习<small>CHINA × WORLD · TIMELINE</small></div>
+ <div class="nav">
+  <button class="active" data-view="timeline">总时间轴</button>
+  <button data-view="systems">体系主线</button>
+  <button data-view="compare">中外同期</button>
+ </div>
+ <div class="side-title">中国史阶段</div><div id="chinaNav"></div>
+ <div class="side-title">世界史阶段</div><div id="worldNav"></div>
+</aside>
+<main class="main">
+ <section class="hero">
+  <div class="eyebrow">高三历史知识系统</div>
+  <h1>从公元前到现在，按时间和体系复习</h1>
+  <p>一级界面负责“我现在在哪个时代”；点开任意事件进入二级知识页，直接看细分考点、选择题陷阱、材料题问法与串联主线。</p>
+  <div class="stats"><div class="stat"><b id="eventCount"></b><span>知识节点</span></div><div class="stat"><b>8</b><span>核心体系</span></div><div class="stat"><b>3级</b><span>重要度</span></div></div>
+ </section>
+ <div class="tools" id="tools">
+  <input class="search" id="search" placeholder="搜索：甲午 / 郡县 / 工业革命 / 冷战…">
+  <div class="segment" id="sideSeg"><button class="active" data-side="全部">全部</button><button data-side="中国史">中国史</button><button data-side="世界史">世界史</button></div>
+  <div class="segment" id="starSeg"><button class="active" data-star="0">全部</button><button data-star="3">★★★</button><button data-star="2">★★+</button></div>
+ </div>
+ <section class="view active" id="timelineView"><div id="timelineHost"></div></section>
+ <section class="view" id="systemsView"><div class="group-head"><h2>体系主线</h2><span>大题串联</span></div><div class="system-grid" id="systemHost"></div></section>
+ <section class="view" id="compareView"><div class="group-head"><h2>中外同期对照</h2><span>同一时代一起看</span></div><div id="compareHost"></div></section>
+</main>
+</div>
+<div class="mobile-tabs">
+ <button class="active" data-view="timeline">时间线</button><button data-view="systems">体系</button><button data-view="compare">中外同期</button>
+</div>
+
+<section class="detail" id="detail" aria-hidden="true">
+ <div class="detail-top"><div class="detail-bar"><button class="back" id="backBtn">← 返回总览</button><span id="detailStar"></span></div></div>
+ <main class="detail-main" id="detailMain"></main>
+</section>
+
+<script>
+const EVENTS=[{"side":"中国史","era":"史前—夏商周","date":"距今约1万年前","year":-10000,"title":"农业产生与定居生活","importance":2,"summary":"南稻北粟，定居生活发展，原始村落形成。","points":["农业革命与定居","陶器与早期手工业","中华文明起源的多元性"],"links":["中华文明起源","生产力与社会结构变化"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["农业革命与定居","陶器与早期手工业","中华文明起源的多元性"]},{"side":"中国史","era":"史前—夏商周","date":"约前2070","year":-2070,"title":"夏朝建立","importance":2,"summary":"传统上视为中国最早的奴隶制王朝，世袭制逐步确立。","points":["世袭制取代禅让制","早期国家形成"],"links":["从部落联盟到早期国家"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["世袭制取代禅让制","早期国家形成"]},{"side":"中国史","era":"史前—夏商周","date":"约前1600","year":-1600,"title":"商朝","importance":2,"summary":"甲骨文、青铜文化高度发展，王权与神权结合。","points":["甲骨文","青铜器","内外服制"],"links":["早期国家政治结构"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["甲骨文","青铜器","内外服制"]},{"side":"中国史","era":"史前—夏商周","date":"前1046","year":-1046,"title":"西周建立","importance":3,"summary":"形成分封制、宗法制、礼乐制相结合的政治秩序。","points":["分封制：地方治理","宗法制：嫡长子继承","礼乐制：等级秩序"],"links":["贵族政治","分封制→郡县制"],"background":"商朝灭亡后，周人建立新的统治秩序，需要解决广阔疆域治理和贵族内部权力继承问题。","pitfalls":["分封制不是现代意义上的地方行政区划，诸侯具有较强世袭性和自主性。","宗法制的核心是嫡长子继承，不等于单纯的血缘亲情。","礼乐制主要维护等级秩序，与分封、宗法相互配合。"],"questions":["概括西周政治制度的特点。","比较西周分封制与秦朝郡县制的差异。","分析西周政治由贵族政治向秦汉官僚政治转变的原因。"],"keywords":["血缘纽带","等级秩序","分封制","宗法制","贵族政治"]},{"side":"中国史","era":"春秋战国","date":"前770—前221","year":-770,"title":"春秋战国：社会大变革","importance":3,"summary":"生产力发展推动政治、经济、思想全面转型。","points":["铁犁牛耕","井田制瓦解","诸侯争霸与兼并","县制与中央集权趋势"],"links":["生产力→制度变革","百家争鸣"],"background":"铁器牛耕推广，生产力提高；井田制和宗法分封秩序逐渐瓦解；诸侯争霸兼并加剧。","pitfalls":["春秋战国不是单纯的“战乱期”，更重要的是社会转型。","铁犁牛耕属于生产力变化，要能推出土地关系、阶级结构和政治制度变化。","县制和官僚政治趋势在秦统一前已经出现。"],"questions":["从经济、政治、思想三个角度概括春秋战国的时代特征。","说明生产力变化如何推动社会制度转型。"],"keywords":["社会转型","铁犁牛耕","土地私有","中央集权趋势","百家争鸣"]},{"side":"中国史","era":"春秋战国","date":"前356前后","year":-356,"title":"商鞅变法","importance":3,"summary":"秦国通过军功、县制、土地制度等改革实现富国强兵。","points":["奖励军功","奖励耕织","推行县制","承认土地私有"],"links":["秦统一条件","战国变法"],"background":"战国兼并战争加剧，各国需要富国强兵；秦国相对落后，改革需求强烈。","pitfalls":["商鞅变法不是秦统一后发生，而是战国时期。","县制有利于加强中央集权，不是扩大贵族封地。","奖励军功削弱了旧贵族世袭特权。"],"questions":["说明商鞅变法为何能增强秦国实力。","从社会转型角度评价商鞅变法。"],"keywords":["富国强兵","军功爵制","县制","土地私有","中央集权"]},{"side":"中国史","era":"春秋战国","date":"战国时期","year":-350,"title":"百家争鸣","importance":3,"summary":"儒、道、墨、法等学派活跃，是中国历史上第一次思想文化高峰。","points":["孔孟荀","老庄","墨子","韩非"],"links":["社会转型→思想活跃","中国传统思想源流"],"background":"社会剧烈变革、士阶层活跃、各诸侯国招揽人才，为思想争鸣提供条件。","pitfalls":["孔子生活在春秋时期，孟子、荀子、韩非等主要在战国。","法家强调以法治国和君主集权，不等同于现代法治。","百家争鸣是社会变革的思想反映。"],"questions":["分析百家争鸣出现的社会背景。","比较儒家、法家对社会秩序重建的不同主张。"],"keywords":["士阶层","社会变革","思想解放","儒墨道法"]},{"side":"中国史","era":"秦汉","date":"前221","year":-221,"title":"秦统一六国","importance":3,"summary":"建立统一的多民族中央集权国家。","points":["皇帝制度","三公九卿","郡县制","统一文字货币度量衡"],"links":["贵族政治→官僚政治","大一统国家建立"],"background":"长期兼并战争和民族经济联系加强形成统一趋势；秦国经商鞅变法实力最强。","pitfalls":["郡县长官由中央任免，不世袭。","秦朝的中央集权与君主专制是两个相关但不同维度。","统一文字、货币、度量衡属于巩固统一措施。"],"questions":["分析秦统一的历史条件和意义。","比较分封制与郡县制。","说明秦朝制度对后世的影响。"],"keywords":["大一统","皇帝制度","三公九卿","郡县制","官僚政治"]},{"side":"中国史","era":"秦汉","date":"前206—220","year":-206,"title":"汉朝巩固大一统","importance":3,"summary":"汉武帝时期政治、经济、思想与边疆治理全面强化中央集权。","points":["推恩令","中外朝","刺史制度","罢黜百家独尊儒术","盐铁官营"],"links":["秦汉大一统","儒学官方化"],"background":"汉初郡国并行导致王国势力膨胀；中央需要加强政治、经济、思想控制。","pitfalls":["推恩令不是废除所有诸侯，而是通过分割封地削弱王国实力。","“独尊儒术”并不意味着其他思想完全消失。","盐铁官营属于经济领域强化中央控制。"],"questions":["概括汉武帝巩固大一统的措施。","比较秦汉加强中央集权方式的异同。"],"keywords":["推恩令","刺史","中外朝","儒学正统","盐铁官营"]},{"side":"中国史","era":"秦汉","date":"前138起","year":-138,"title":"张骞通西域与丝绸之路","importance":2,"summary":"加强中原与西域联系，推动东西方交流。","points":["张骞出使西域","丝绸之路","边疆治理"],"links":["中外交流","统一多民族国家"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["张骞出使西域","丝绸之路","边疆治理"]},{"side":"中国史","era":"魏晋南北朝","date":"220—589","year":220,"title":"分裂、民族交融与江南开发","importance":3,"summary":"北方长期战乱与民族迁徙推动民族交融，南方经济显著发展。","points":["人口南迁","江南开发","民族交融"],"links":["经济重心南移起点","隋唐统一条件"],"background":"北方长期战乱、人口迁徙频繁；南方相对稳定，北方人口和技术大量南迁。","pitfalls":["民族交融是双向互动，不能简单写成单向“汉化”。","江南开发不是经济重心南移已经完成。","经济重心南移完成要到南宋。"],"questions":["分析魏晋南北朝江南开发的原因。","概括这一时期民族交融的表现和影响。"],"keywords":["人口南迁","江南开发","民族交融","南北经济差距缩小"]},{"side":"中国史","era":"魏晋南北朝","date":"5世纪后期","year":490,"title":"北魏孝文帝改革","importance":3,"summary":"迁都洛阳并推行汉化措施，促进民族交融。","points":["迁都洛阳","改汉姓汉服","通婚与制度改革"],"links":["民族交融","北方社会转型"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["迁都洛阳","改汉姓汉服","通婚与制度改革"]},{"side":"中国史","era":"隋唐","date":"589","year":589,"title":"隋统一","importance":2,"summary":"结束长期分裂，为唐代繁荣奠定基础。","points":["统一南北","制度整合"],"links":["分裂→统一"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["统一南北","制度整合"]},{"side":"中国史","era":"隋唐","date":"隋唐时期","year":620,"title":"三省六部制与科举制","importance":3,"summary":"完善中央行政体系和官员选拔制度。","points":["中书决策","门下审核","尚书执行","科举扩大统治基础"],"links":["皇权—相权关系","选官制度演变"],"background":"隋唐统一后需要更高效的中央行政体系和更广泛的人才选拔机制。","pitfalls":["三省之间是分工与制约，不是近代三权分立。","科举制并非一开始就完全打破门第影响，而是逐步扩大社会流动。","科举制强化的是中央对选官权的控制。"],"questions":["说明三省六部制如何加强皇权并提高行政效率。","评价科举制的历史作用。"],"keywords":["分工制约","皇权","科举","社会流动","中央集权"]},{"side":"中国史","era":"隋唐","date":"618—907","year":618,"title":"唐朝：开放与繁荣","importance":3,"summary":"政治稳定、民族交往频繁、对外交流活跃。","points":["长安国际化","文成公主入藏","玄奘西行","鉴真东渡"],"links":["统一多民族国家","中外文化交流"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["长安国际化","文成公主入藏","玄奘西行","鉴真东渡"]},{"side":"中国史","era":"隋唐","date":"755—763","year":755,"title":"安史之乱","importance":3,"summary":"唐朝由盛转衰，中央控制力下降，经济重心南移加快。","points":["藩镇问题","中央集权削弱","北方经济破坏"],"links":["经济重心南移","藩镇割据"],"background":"唐玄宗后期政治腐败，边镇节度使权力膨胀，中央与地方矛盾加剧。","pitfalls":["安史之乱不是唐朝灭亡的直接年份，而是由盛转衰的转折。","藩镇割据在安史之乱后更加严重。","北方破坏推动经济重心进一步南移。"],"questions":["分析安史之乱对唐代政治和经济格局的影响。"],"keywords":["由盛转衰","藩镇割据","中央权力削弱","经济重心南移"]},{"side":"中国史","era":"宋辽夏金元","date":"960起","year":960,"title":"宋代加强中央集权","importance":3,"summary":"实行强干弱枝、重文轻武，削弱地方与武将。","points":["收兵权","分地方权力","文官政治"],"links":["中央—地方关系","重文轻武利弊"],"background":"唐末五代藩镇割据和武将专权使宋初统治者高度警惕地方军政势力。","pitfalls":["宋代强化中央集权不等于行政效率全面提高。","重文轻武有防割据作用，也带来军队战斗力和财政问题。","宋代并非取消地方行政，而是分割地方权力。"],"questions":["概括宋初加强中央集权的措施及其影响。","评价重文轻武政策。"],"keywords":["强干弱枝","重文轻武","分权制衡","冗官冗费"]},{"side":"中国史","era":"宋辽夏金元","date":"10—13世纪","year":1000,"title":"宋代商品经济与城市繁荣","importance":3,"summary":"坊市界限打破，夜市、纸币、海外贸易发展。","points":["交子","市舶司","草市与夜市","城市市民文化"],"links":["经济发展→社会文化变化"],"background":"农业、手工业进步，交通和货币经济发展，社会稳定度较高。","pitfalls":["坊市界限松动主要是宋代商业发展的表现之一。","交子是纸币，但其出现不能直接等同于现代金融体系。","市舶司是管理海外贸易的政府机构。"],"questions":["概括宋代商业革命的表现。","说明商品经济发展对社会生活和文化的影响。"],"keywords":["坊市突破","夜市","交子","海外贸易","市民文化"]},{"side":"中国史","era":"宋辽夏金元","date":"南宋时期","year":1150,"title":"经济重心南移完成","importance":3,"summary":"中国经济中心由黄河流域转向长江流域。","points":["人口南迁","江南开发","南方农业手工业商业"],"links":["魏晋开发→唐中后期加快→南宋完成"],"background":"长期人口南迁和江南开发积累，南方农业、手工业、商业持续发展。","pitfalls":["经济重心南移是长期过程，不是某一年突然发生。","魏晋是开始开发，唐中后期加快，南宋基本完成。"],"questions":["分析中国古代经济重心南移的原因和影响。"],"keywords":["人口南迁","江南开发","安史之乱","南宋","南方经济"]},{"side":"中国史","era":"宋辽夏金元","date":"1271—1279","year":1271,"title":"元朝与行省制","importance":3,"summary":"元朝统一全国，行省制度加强中央对地方管理。","points":["行省制","澎湖巡检司","西藏纳入中央政府管理"],"links":["地方行政制度演变","统一多民族国家"],"background":"元朝疆域辽阔，需要建立适合大一统国家的地方治理体系。","pitfalls":["行省既受中央控制，也拥有较大地方行政权限。","行省制不是现代省制完全照搬，但对后世影响深远。"],"questions":["说明行省制对统一多民族国家治理的意义。"],"keywords":["行省制","中央地方关系","边疆治理","大一统"]},{"side":"中国史","era":"明清","date":"1368","year":1368,"title":"明朝建立与废丞相","importance":3,"summary":"朱元璋废丞相，皇权进一步强化。","points":["废中书省和丞相","六部直接对皇帝负责","内阁并非宰相机构"],"links":["皇权加强趋势"],"background":"明初统治者吸取元末政治失序教训，强化皇权和中央控制。","pitfalls":["内阁不是法定宰相机构。","废丞相后并非行政事务减少，而是皇帝负担加重。","内阁票拟权不等于最终决策权。"],"questions":["分析明朝废丞相对君主专制发展的影响。","比较唐代三省六部与明代内阁。"],"keywords":["废丞相","六部直属皇帝","内阁","皇权强化"]},{"side":"中国史","era":"明清","date":"雍正时期","year":1730,"title":"军机处","importance":3,"summary":"军机处成为辅助皇帝处理政务的重要机构，君主专制进一步强化。","points":["简速密","跪受笔录","无独立决策权"],"links":["秦汉—隋唐—明清皇权演变"],"background":"清代皇帝进一步提高决策保密性和行政效率，强化君主集权。","pitfalls":["军机处没有独立决策权，最终决策仍在皇帝。","军机处不是近代内阁。"],"questions":["概括军机处的特点并说明其政治影响。"],"keywords":["简速密","跪受笔录","君主专制强化"]},{"side":"中国史","era":"明清","date":"明清时期","year":1600,"title":"商品经济发展与新经营方式","importance":3,"summary":"商帮、白银流通、工商业市镇和新的经营方式发展。","points":["区域商帮","白银货币化","工商业市镇","新的经营方式"],"links":["传统经济中的新因素"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["先定位朝代与阶段，再判断政治、经济、民族、思想四个维度。","注意区分“趋势”“完成”“正式确立”等教材用语。"],"questions":["概括这一时期的阶段特征。","分析制度或经济变化的原因与影响。"],"keywords":["区域商帮","白银货币化","工商业市镇","新的经营方式"]},{"side":"中国史","era":"明清","date":"1683—18世纪","year":1683,"title":"清代边疆治理","importance":3,"summary":"对台湾、西藏、新疆、东北等地区治理加强，奠定现代中国疆域基础。","points":["台湾府","驻藏大臣","伊犁将军","《尼布楚条约》"],"links":["统一多民族国家巩固"],"background":"清朝疆域辽阔，需要通过军事、行政、册封、条约等多种方式加强边疆治理。","pitfalls":["台湾府、驻藏大臣、伊犁将军分别对应不同区域，不要混淆。","《尼布楚条约》处理的是中俄东北边界问题。"],"questions":["概括清代治理边疆的方式。","说明清代边疆治理对统一多民族国家的意义。"],"keywords":["因地制宜","边疆治理","国家统一","多民族国家"]},{"side":"中国史","era":"近代中国","date":"1840—1842","year":1840,"title":"鸦片战争","importance":3,"summary":"中国近代史开端，中国开始沦为半殖民地半封建社会。","points":["工业革命后英国扩张","《南京条约》","主权受损","自然经济逐步解体"],"links":["中国被卷入世界市场","近代民族危机"],"background":"工业革命后英国需要海外市场和原料；清朝闭关政策和传统经济结构与世界形势脱节。","pitfalls":["鸦片战争的根本背景不能只写“禁烟运动”。","中国自然经济是“逐步解体”，不是1840年立即完全瓦解。","《南京条约》是近代第一个不平等条约。"],"questions":["分析鸦片战争爆发的背景。","说明鸦片战争为何成为中国近代史开端。","从中外联系角度解释1840年前后的历史转折。"],"keywords":["工业革命","市场扩张","《南京条约》","主权受损","近代史开端"]},{"side":"中国史","era":"近代中国","date":"1856—1860","year":1856,"title":"第二次鸦片战争","importance":3,"summary":"列强进一步扩大侵华权益，中国半殖民地化程度加深。","points":["英法联军","更多通商口岸","主权进一步受损"],"links":["列强扩大侵略"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["近代中国题常把民族危机、社会阶层、近代化探索三个角度组合。","评价类题目通常同时写历史作用与局限。"],"questions":["结合材料概括该事件的背景、特点或影响。","把该事件放入近代救亡或现代化主线中比较。"],"keywords":["英法联军","更多通商口岸","主权进一步受损"]},{"side":"中国史","era":"近代中国","date":"1860s—1890s","year":1861,"title":"洋务运动","importance":3,"summary":"以自强、求富为口号，是中国早期现代化的重要尝试。","points":["军事工业","民用工业","近代海军","新式教育"],"links":["器物层面的近代化","甲午战争检验"],"background":"第二次鸦片战争后，清政府面临内忧外患，部分官员主张学习西方技术以维护统治。","pitfalls":["洋务运动的主要目标是自强求富、维护清朝统治，不是建立资本主义制度。","洋务企业包含军事工业和民用企业，性质不能一概而论。","甲午战败说明洋务运动局限，但不能否认其近代化作用。"],"questions":["评价洋务运动的历史作用与局限。","说明中国近代化为什么首先从器物层面开始。"],"keywords":["中体西用","自强求富","近代工业","海军","早期现代化"]},{"side":"中国史","era":"近代中国","date":"1894—1895","year":1894,"title":"甲午中日战争","importance":3,"summary":"民族危机大大加深，洋务运动局限暴露，列强掀起瓜分狂潮。","points":["《马关条约》","瓜分狂潮","民族危机","制度改革需求"],"links":["洋务→戊戌","帝国主义扩张"],"background":"日本明治维新后对外扩张；朝鲜问题成为中日冲突焦点；清朝制度与军事改革存在局限。","pitfalls":["甲午战争发生在第二次工业革命时期的大国扩张背景下。","《马关条约》允许日本在华设厂，反映列强资本输出加强。","甲午战败直接刺激了维新变法和救亡思潮。"],"questions":["为什么甲午战争是中国近代史重要转折点？","分析甲午战败对中国政治和思想的影响。"],"keywords":["《马关条约》","民族危机","瓜分狂潮","资本输出","制度改革"]},{"side":"中国史","era":"近代中国","date":"1898","year":1898,"title":"戊戌变法","importance":3,"summary":"资产阶级维新派尝试进行制度改革。","points":["康有为梁启超","君主立宪倾向","思想启蒙","失败原因"],"links":["器物→制度"],"background":"甲午战败、瓜分危机加剧，维新派认为仅学习技术不足以救国。","pitfalls":["戊戌变法属于制度改革尝试，不是暴力革命。","变法失败不等于没有思想启蒙意义。"],"questions":["分析戊戌变法兴起的原因和失败原因。","比较洋务运动与戊戌变法的近代化层次。"],"keywords":["维新派","君主立宪","制度改革","思想启蒙"]},{"side":"中国史","era":"近代中国","date":"1900—1901","year":1900,"title":"八国联军侵华与《辛丑条约》","importance":3,"summary":"中国完全陷入半殖民地半封建社会深渊。","points":["八国联军","庚子赔款","清政府统治危机"],"links":["近代半殖民地化进程"],"background":"义和团运动与列强在华利益冲突加剧，帝国主义列强联合出兵。","pitfalls":["《辛丑条约》签订于1901年。","“完全陷入深渊”是教材常用阶段性结论。"],"questions":["说明1900年前后民族危机进一步加深的表现。"],"keywords":["八国联军","《辛丑条约》","半殖民地半封建","民族危机"]},{"side":"中国史","era":"近代中国","date":"1911—1912","year":1911,"title":"辛亥革命与中华民国","importance":3,"summary":"推翻清朝统治，结束君主专制制度，建立共和政体。","points":["武昌起义","中华民国","民主共和观念","反帝反封建任务未完成"],"links":["制度革命","近代民主政治探索"],"background":"清末统治危机、民族资本主义发展、民主革命思想传播、革命组织发展。","pitfalls":["辛亥革命结束的是君主专制制度，不是中国两千多年“封建制度”整体终结。","中华民国建立不等于反帝反封建任务完成。","民主共和观念深入传播是其重要成果。"],"questions":["如何全面评价辛亥革命？","为什么说辛亥革命既有重大历史功绩又存在局限？"],"keywords":["共和政体","君主专制终结","民主共和","革命局限"]},{"side":"中国史","era":"近代中国","date":"1915","year":1915,"title":"新文化运动","importance":3,"summary":"以民主、科学为旗帜，推动思想解放。","points":["陈独秀","李大钊","胡适","鲁迅","民主与科学"],"links":["器物→制度→思想"],"background":"辛亥革命后共和制度未能解决社会政治危机，知识分子进一步反思传统思想文化。","pitfalls":["新文化运动的核心旗帜是民主与科学。","它推动思想解放，但对传统文化存在过于绝对化的倾向。"],"questions":["说明新文化运动与前期近代化探索的关系。","评价新文化运动的历史作用。"],"keywords":["民主","科学","思想解放","文化转型"]},{"side":"中国史","era":"新民主主义革命","date":"1919","year":1919,"title":"五四运动","importance":3,"summary":"彻底反帝反封建的爱国运动，中国新民主主义革命开端。","points":["巴黎和会外交失败","工人阶级登上政治舞台","马克思主义传播"],"links":["1919→1921中共成立"],"background":"一战后巴黎和会中国外交失败，国内反帝情绪高涨，新的社会力量成长。","pitfalls":["五四运动并非只有学生参与，后期工人阶级发挥重要作用。","五四运动与马克思主义传播、中共成立之间要会串联。"],"questions":["为什么五四运动成为新民主主义革命开端？","分析五四运动对中国社会思想和政治力量的影响。"],"keywords":["反帝反封建","工人阶级","马克思主义","新民主主义革命"]},{"side":"中国史","era":"新民主主义革命","date":"1921","year":1921,"title":"中国共产党成立","importance":3,"summary":"中国革命有了新的领导力量，革命面貌焕然一新。","points":["马克思主义与工人运动结合","中共一大"],"links":["新民主主义革命"],"background":"马克思主义传播、工人运动发展以及五四运动后的社会政治条件共同推动。","pitfalls":["中共成立于1921年，不要与1919五四运动混淆。","“革命面貌焕然一新”是教材高频结论。"],"questions":["分析中国共产党成立的历史条件和意义。"],"keywords":["马克思主义","工人运动","1921","新的领导力量"]},{"side":"中国史","era":"新民主主义革命","date":"1924—1927","year":1924,"title":"国民革命与北伐","importance":3,"summary":"第一次国共合作推动反帝反军阀运动。","points":["国共合作","北伐战争","大革命失败"],"links":["国共关系演变"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["近代中国题常把民族危机、社会阶层、近代化探索三个角度组合。","评价类题目通常同时写历史作用与局限。"],"questions":["结合材料概括该事件的背景、特点或影响。","把该事件放入近代救亡或现代化主线中比较。"],"keywords":["国共合作","北伐战争","大革命失败"]},{"side":"中国史","era":"新民主主义革命","date":"1927以后","year":1927,"title":"井冈山道路","importance":3,"summary":"中共探索农村包围城市、武装夺取政权的新道路。","points":["南昌起义","八七会议","秋收起义","井冈山根据地"],"links":["中国特色革命道路"],"background":"1927年大革命失败，城市中心暴动受挫，中共需要探索符合中国国情的新革命道路。","pitfalls":["井冈山道路不是放弃城市，而是战略重心转向农村。","农村包围城市是长期探索形成的，不是一次会议突然确定完整体系。"],"questions":["说明中共为何转向农村革命根据地道路。","分析中国革命道路形成体现了怎样的思想方法。"],"keywords":["农村包围城市","武装夺取政权","根据地","实事求是"]},{"side":"中国史","era":"新民主主义革命","date":"1934—1936","year":1934,"title":"长征与遵义会议","importance":3,"summary":"遵义会议是中共走向成熟的重要标志。","points":["第五次反围剿失利","长征","遵义会议","战略转移"],"links":["革命道路成熟"],"background":"第五次反“围剿”失利，中央红军被迫战略转移。","pitfalls":["遵义会议发生于1935年。","教材通常表述为“开始确立以毛泽东为主要代表的马克思主义正确路线在党中央的领导地位”。"],"questions":["说明遵义会议为什么是中共历史上的重要转折。"],"keywords":["1935","遵义会议","独立自主","走向成熟"]},{"side":"中国史","era":"新民主主义革命","date":"1931—1937","year":1931,"title":"九一八事变与抗日民族统一战线形成","importance":3,"summary":"日本侵华升级，民族矛盾上升，国共关系发生变化。","points":["九一八事变","西安事变","抗日民族统一战线"],"links":["民族危机→国共合作"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["近代中国题常把民族危机、社会阶层、近代化探索三个角度组合。","评价类题目通常同时写历史作用与局限。"],"questions":["结合材料概括该事件的背景、特点或影响。","把该事件放入近代救亡或现代化主线中比较。"],"keywords":["九一八事变","西安事变","抗日民族统一战线"]},{"side":"中国史","era":"新民主主义革命","date":"1937—1945","year":1937,"title":"全民族抗战","importance":3,"summary":"正面战场与敌后战场共同抗战，最终取得近代以来反侵略战争的首次完全胜利。","points":["七七事变","淞沪会战","台儿庄","百团大战","抗战胜利"],"links":["国共合作","世界反法西斯战争"],"background":"日本侵华步步升级，1937年七七事变后中华民族面临全面危机。","pitfalls":["正面战场与敌后战场都为抗战胜利作出贡献。","抗战胜利是中国近代以来抗击外敌入侵第一次取得完全胜利。"],"questions":["分析抗日战争胜利的原因和历史意义。","比较正面战场与敌后战场的作用。"],"keywords":["全民族抗战","国共合作","正面战场","敌后战场","反法西斯战争"]},{"side":"中国史","era":"新民主主义革命","date":"1946—1949","year":1946,"title":"解放战争","importance":3,"summary":"国共内战最终以人民解放军取得全国性胜利告终。","points":["三大战役","渡江战役","国民党政权覆灭"],"links":["1949新中国成立"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["近代中国题常把民族危机、社会阶层、近代化探索三个角度组合。","评价类题目通常同时写历史作用与局限。"],"questions":["结合材料概括该事件的背景、特点或影响。","把该事件放入近代救亡或现代化主线中比较。"],"keywords":["三大战役","渡江战役","国民党政权覆灭"]},{"side":"中国史","era":"社会主义革命与建设","date":"1949-10-01","year":1949,"title":"中华人民共和国成立","importance":3,"summary":"新民主主义革命取得基本胜利，中国进入新的历史时期。","points":["人民当家作主","国家独立","新政权建立"],"links":["革命→建设"],"background":"解放战争取得决定性胜利，国民党政权在大陆统治崩溃。","pitfalls":["1949年新中国成立并不意味着社会主义制度已经建立；社会主义基本制度建立在1956年前后。"],"questions":["说明新中国成立的历史意义。"],"keywords":["国家独立","人民当家作主","新纪元"]},{"side":"中国史","era":"社会主义革命与建设","date":"1953—1957","year":1953,"title":"一五计划","importance":3,"summary":"优先发展重工业，社会主义工业化起步。","points":["重工业优先","苏联援助","工业基础建设"],"links":["中国现代化"],"background":"新中国工业基础薄弱，需要快速建立独立工业体系和国防基础。","pitfalls":["一五计划优先发展重工业，不等于忽视一切农业。","一五计划与三大改造时间有重叠，但目标不同。"],"questions":["说明一五计划的特点、原因和影响。"],"keywords":["重工业优先","工业化起步","计划经济"]},{"side":"中国史","era":"社会主义革命与建设","date":"1953—1956","year":1953.5,"title":"三大改造","importance":3,"summary":"农业、手工业、资本主义工商业社会主义改造基本完成。","points":["农业合作化","手工业合作化","公私合营"],"links":["社会主义基本制度建立"],"background":"国家工业化推进，需要建立与社会主义工业化相适应的经济制度。","pitfalls":["三大改造对象是农业、手工业和资本主义工商业。","1956年基本完成后，社会主义基本制度在中国建立。"],"questions":["说明三大改造完成的历史意义。"],"keywords":["社会主义改造","公有制","1956","社会主义基本制度"]},{"side":"中国史","era":"社会主义革命与建设","date":"1954","year":1954,"title":"第一届全国人大与1954年宪法","importance":3,"summary":"人民代表大会制度进一步确立，第一部社会主义类型宪法通过。","points":["人民代表大会制度","1954年宪法"],"links":["社会主义政治制度"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["区分政治制度建立、经济制度变化和具体政策调整的时间。","改革开放题要注意“制度不变、体制机制改革”的表述。"],"questions":["说明政策调整的背景、内容与影响。","从现代化或国家治理角度概括阶段变化。"],"keywords":["人民代表大会制度","1954年宪法"]},{"side":"中国史","era":"社会主义革命与建设","date":"1971—1972","year":1971,"title":"外交突破","importance":3,"summary":"恢复联合国合法席位，中美、中日关系取得重大突破。","points":["1971恢复联合国合法席位","1972尼克松访华","中日邦交正常化"],"links":["中国国际地位提升"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["区分政治制度建立、经济制度变化和具体政策调整的时间。","改革开放题要注意“制度不变、体制机制改革”的表述。"],"questions":["说明政策调整的背景、内容与影响。","从现代化或国家治理角度概括阶段变化。"],"keywords":["1971恢复联合国合法席位","1972尼克松访华","中日邦交正常化"]},{"side":"中国史","era":"改革开放","date":"1978","year":1978,"title":"十一届三中全会","importance":3,"summary":"把工作重心转向社会主义现代化建设，开启改革开放新时期。","points":["工作重心转移","改革开放","实事求是"],"links":["中国现代化新阶段"],"background":"社会主义建设经历曲折，国家需要重新确立发展重心和改革方向。","pitfalls":["十一届三中全会召开于1978年。","改革开放不是否定社会主义制度，而是改革不适应生产力发展的体制机制。"],"questions":["说明十一届三中全会为何成为历史性转折。"],"keywords":["1978","工作重心转移","改革开放","现代化建设"]},{"side":"中国史","era":"改革开放","date":"1978以后","year":1979,"title":"农村与城市经济体制改革","importance":3,"summary":"家庭联产承包责任制率先突破，城市改革逐步推进。","points":["家庭联产承包责任制","扩大企业自主权","所有制与经营方式区分"],"links":["计划经济→市场化改革"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["区分政治制度建立、经济制度变化和具体政策调整的时间。","改革开放题要注意“制度不变、体制机制改革”的表述。"],"questions":["说明政策调整的背景、内容与影响。","从现代化或国家治理角度概括阶段变化。"],"keywords":["家庭联产承包责任制","扩大企业自主权","所有制与经营方式区分"]},{"side":"中国史","era":"改革开放","date":"1980s—1990s","year":1980,"title":"对外开放格局形成","importance":3,"summary":"经济特区、沿海开放城市、沿海经济开放区逐层展开。","points":["深圳等经济特区","沿海开放城市","全方位多层次宽领域"],"links":["开放型经济"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["区分政治制度建立、经济制度变化和具体政策调整的时间。","改革开放题要注意“制度不变、体制机制改革”的表述。"],"questions":["说明政策调整的背景、内容与影响。","从现代化或国家治理角度概括阶段变化。"],"keywords":["深圳等经济特区","沿海开放城市","全方位多层次宽领域"]},{"side":"中国史","era":"改革开放","date":"1992","year":1992,"title":"南方谈话与社会主义市场经济目标","importance":3,"summary":"改革开放进入新阶段，中共十四大明确建立社会主义市场经济体制目标。","points":["南方谈话","中共十四大","社会主义市场经济"],"links":["改革深化"],"background":"改革开放进入关键阶段，需要进一步突破关于计划与市场关系的思想束缚。","pitfalls":["南方谈话与中共十四大都在1992年，但二者不是同一事件。","社会主义市场经济并不等于资本主义市场经济。"],"questions":["说明1992年为何成为改革开放的重要节点。"],"keywords":["南方谈话","中共十四大","社会主义市场经济","改革深化"]},{"side":"中国史","era":"改革开放","date":"2001","year":2001,"title":"加入世界贸易组织","importance":3,"summary":"中国进一步融入经济全球化。","points":["WTO","开放型经济","全球市场"],"links":["全球化与中国"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["区分政治制度建立、经济制度变化和具体政策调整的时间。","改革开放题要注意“制度不变、体制机制改革”的表述。"],"questions":["说明政策调整的背景、内容与影响。","从现代化或国家治理角度概括阶段变化。"],"keywords":["WTO","开放型经济","全球市场"]},{"side":"世界史","era":"古代文明","date":"前3500年前后","year":-3500,"title":"两河流域文明","importance":2,"summary":"城市国家和早期文明兴起，形成较早的成文法传统。","points":["苏美尔城市国家","《汉谟拉比法典》"],"links":["古代法制文明"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["古代世界题重视文明多样性，不宜用单一路径评价所有文明。"],"questions":["概括该文明或制度的特点。","比较不同文明的政治、经济或社会结构。"],"keywords":["苏美尔城市国家","《汉谟拉比法典》"]},{"side":"世界史","era":"古代文明","date":"前3000年前后","year":-3000,"title":"古埃及文明","importance":1,"summary":"尼罗河流域形成统一国家，法老政治与金字塔文明突出。","points":["尼罗河","法老","金字塔"],"links":["大河文明"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["古代世界题重视文明多样性，不宜用单一路径评价所有文明。"],"questions":["概括该文明或制度的特点。","比较不同文明的政治、经济或社会结构。"],"keywords":["尼罗河","法老","金字塔"]},{"side":"世界史","era":"古代文明","date":"古代","year":-1500,"title":"古印度文明与种姓制度","importance":2,"summary":"社会等级结构明显，佛教在古印度兴起。","points":["种姓制度","佛教"],"links":["宗教与社会结构"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["古代世界题重视文明多样性，不宜用单一路径评价所有文明。"],"questions":["概括该文明或制度的特点。","比较不同文明的政治、经济或社会结构。"],"keywords":["种姓制度","佛教"]},{"side":"世界史","era":"古代文明","date":"前5世纪","year":-450,"title":"雅典民主政治","importance":3,"summary":"典型的古代直接民主，但政治权利只属于成年男性公民。","points":["公民大会","直接民主","民主局限"],"links":["古代民主与近代民主比较"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["古代世界题重视文明多样性，不宜用单一路径评价所有文明。"],"questions":["概括该文明或制度的特点。","比较不同文明的政治、经济或社会结构。"],"keywords":["公民大会","直接民主","民主局限"]},{"side":"世界史","era":"古代文明","date":"前5世纪—6世纪","year":-400,"title":"罗马法传统","importance":3,"summary":"从成文法、公民法发展到万民法，对近代法治影响深远。","points":["十二铜表法","公民法","万民法","《查士丁尼民法大全》"],"links":["法律制度演变"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["古代世界题重视文明多样性，不宜用单一路径评价所有文明。"],"questions":["概括该文明或制度的特点。","比较不同文明的政治、经济或社会结构。"],"keywords":["十二铜表法","公民法","万民法","《查士丁尼民法大全》"]},{"side":"世界史","era":"中古世界","date":"5—15世纪","year":700,"title":"西欧封建社会","importance":3,"summary":"封君封臣制与庄园经济构成中世纪西欧基本结构。","points":["封君封臣","庄园制","教会影响","城市复兴"],"links":["中世纪→近代转型"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["古代世界题重视文明多样性，不宜用单一路径评价所有文明。"],"questions":["概括该文明或制度的特点。","比较不同文明的政治、经济或社会结构。"],"keywords":["封君封臣","庄园制","教会影响","城市复兴"]},{"side":"世界史","era":"中古世界","date":"7—13世纪","year":750,"title":"阿拉伯帝国与东西方交流","importance":2,"summary":"阿拉伯世界成为连接欧亚非文明的重要桥梁。","points":["伊斯兰教","阿拉伯帝国","文化传播"],"links":["文明交流"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["古代世界题重视文明多样性，不宜用单一路径评价所有文明。"],"questions":["概括该文明或制度的特点。","比较不同文明的政治、经济或社会结构。"],"keywords":["伊斯兰教","阿拉伯帝国","文化传播"]},{"side":"世界史","era":"走向近代","date":"14—17世纪","year":1400,"title":"文艺复兴","importance":3,"summary":"人文主义兴起，强调人的价值与现实生活。","points":["人文主义","意大利","但丁达芬奇莎士比亚"],"links":["思想解放链条"],"background":"意大利城市经济发展、古典文化资源丰富，新兴资产阶级要求冲破中世纪思想束缚。","pitfalls":["文艺复兴不是简单恢复古希腊罗马文化，而是借古典文化表达新的时代精神。","核心是人文主义。"],"questions":["分析文艺复兴兴起的背景和影响。","比较文艺复兴与启蒙运动的思想重点。"],"keywords":["人文主义","人的价值","思想解放"]},{"side":"世界史","era":"走向近代","date":"15—16世纪","year":1492,"title":"新航路开辟","importance":3,"summary":"欧洲海外航行使世界各地区联系显著加强。","points":["迪亚士","哥伦布","达伽马","麦哲伦船队"],"links":["世界市场开始形成","殖民扩张"],"background":"商品经济发展、黄金需求、奥斯曼控制传统商路、航海技术进步和王室支持。","pitfalls":["哥伦布到达的是美洲，不是印度。","麦哲伦本人未完成全程，但其船队完成环球航行。","世界市场是“开始形成”，不是此时最终形成。"],"questions":["分析新航路开辟的原因和世界性影响。","如何评价新航路开辟的双重影响？"],"keywords":["全球联系","商业革命","价格革命","殖民扩张","世界市场"]},{"side":"世界史","era":"走向近代","date":"16世纪","year":1517,"title":"宗教改革","importance":3,"summary":"挑战天主教会权威，推动思想解放和民族国家发展。","points":["马丁·路德","因信称义","教权受冲击"],"links":["文艺复兴→宗教改革→启蒙"],"background":"天主教会腐败、民族国家发展、人文主义传播，社会要求削弱教会控制。","pitfalls":["马丁·路德主张因信称义。","宗教改革不是反对宗教本身，而是反对罗马教廷权威和旧宗教秩序。"],"questions":["说明宗教改革对欧洲社会转型的影响。"],"keywords":["因信称义","教权削弱","民族国家","思想解放"]},{"side":"世界史","era":"资本主义制度确立","date":"1640—1689","year":1640,"title":"英国资产阶级革命与君主立宪","importance":3,"summary":"议会限制王权，君主立宪制逐步建立。","points":["1640革命","1688光荣革命","1689《权利法案》"],"links":["近代民主制度"],"background":"资本主义发展与斯图亚特王朝专制统治之间矛盾加剧。","pitfalls":["1688光荣革命不是英国资产阶级革命开始，而是重要转折。","1689《权利法案》确立议会限制王权原则，君主立宪制随后逐步发展。"],"questions":["概括英国君主立宪制形成过程和特点。"],"keywords":["议会主权","限制王权","光荣革命","《权利法案》"]},{"side":"世界史","era":"资本主义制度确立","date":"17—18世纪","year":1700,"title":"启蒙运动","importance":3,"summary":"以理性为核心，提出自由、平等、人民主权与分权思想。","points":["伏尔泰","孟德斯鸠","卢梭","理性主义"],"links":["思想→政治革命"],"background":"资本主义发展、自然科学进步、专制制度和教会权威受到质疑。","pitfalls":["启蒙运动核心是理性主义。","孟德斯鸠强调三权分立，卢梭强调人民主权和社会契约。"],"questions":["说明启蒙思想如何影响近代资产阶级革命。","比较文艺复兴和启蒙运动。"],"keywords":["理性","自由平等","人民主权","三权分立"]},{"side":"世界史","era":"资本主义制度确立","date":"1775—1787","year":1776,"title":"美国独立与1787年宪法","importance":3,"summary":"建立联邦共和国与三权分立制度，但民主仍具有历史局限。","points":["《独立宣言》","1787宪法","三权分立","联邦制"],"links":["近代民主制度比较"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["注意把思想、制度、工业化、殖民扩张放在同一时间背景下。","比较题要抓相同背景与不同路径。"],"questions":["分析资本主义发展、思想解放或世界联系增强之间的关系。","概括事件对近代世界转型的影响。"],"keywords":["《独立宣言》","1787宪法","三权分立","联邦制"]},{"side":"世界史","era":"资本主义制度确立","date":"1789起","year":1789,"title":"法国大革命","importance":3,"summary":"摧毁旧制度，传播自由平等与资产阶级法权原则。","points":["《人权宣言》","拿破仑","《拿破仑法典》"],"links":["启蒙思想实践"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["注意把思想、制度、工业化、殖民扩张放在同一时间背景下。","比较题要抓相同背景与不同路径。"],"questions":["分析资本主义发展、思想解放或世界联系增强之间的关系。","概括事件对近代世界转型的影响。"],"keywords":["《人权宣言》","拿破仑","《拿破仑法典》"]},{"side":"世界史","era":"工业革命","date":"18世纪60年代—19世纪中期","year":1765,"title":"第一次工业革命","importance":3,"summary":"机器生产取代手工生产，工厂制度兴起，世界市场扩大。","points":["英国首先发生","蒸汽机","工厂制度","铁路","城市化"],"links":["工业化→社会结构变化","世界市场基本形成"],"background":"英国政治稳定、资本和市场积累、劳动力充足、技术条件成熟。","pitfalls":["第一次工业革命的核心动力是蒸汽动力和机器生产。","工业革命不仅是技术变化，也深刻改变社会结构、城市化和世界市场。"],"questions":["分析英国率先发生工业革命的条件。","说明工业革命对社会结构和世界市场的影响。"],"keywords":["机器生产","蒸汽机","工厂制度","城市化","世界市场"]},{"side":"世界史","era":"工业革命","date":"19世纪70年代—20世纪初","year":1870,"title":"第二次工业革命","importance":3,"summary":"电力、内燃机、化学工业等发展，垄断资本出现。","points":["电力","内燃机","科学与技术紧密结合","垄断组织"],"links":["帝国主义","世界市场最终形成"],"background":"自然科学进步、资本主义制度扩展和统一市场形成，为新技术应用提供条件。","pitfalls":["第二次工业革命中科学与技术结合更紧密。","电力和内燃机是代表性动力，蒸汽机主要属于第一次工业革命。","垄断组织出现与资本集中有关。"],"questions":["比较两次工业革命的特点。","分析第二次工业革命如何推动帝国主义和世界市场发展。"],"keywords":["电力","内燃机","科学技术结合","垄断组织","帝国主义"]},{"side":"世界史","era":"社会主义运动","date":"1848","year":1848,"title":"《共产党宣言》发表","importance":3,"summary":"马克思主义诞生，科学社会主义形成。","points":["马克思恩格斯","科学社会主义"],"links":["工人运动→社会主义革命"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["注意把思想、制度、工业化、殖民扩张放在同一时间背景下。","比较题要抓相同背景与不同路径。"],"questions":["分析资本主义发展、思想解放或世界联系增强之间的关系。","概括事件对近代世界转型的影响。"],"keywords":["马克思恩格斯","科学社会主义"]},{"side":"世界史","era":"社会主义运动","date":"1871","year":1871,"title":"巴黎公社","importance":3,"summary":"无产阶级建立政权的第一次伟大尝试。","points":["巴黎公社","无产阶级政权尝试"],"links":["1848→1871→1917"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["注意把思想、制度、工业化、殖民扩张放在同一时间背景下。","比较题要抓相同背景与不同路径。"],"questions":["分析资本主义发展、思想解放或世界联系增强之间的关系。","概括事件对近代世界转型的影响。"],"keywords":["巴黎公社","无产阶级政权尝试"]},{"side":"世界史","era":"帝国主义与世界大战","date":"1914—1918","year":1914,"title":"第一次世界大战","importance":3,"summary":"帝国主义国家矛盾激化引发全球战争。","points":["政治经济发展不平衡","两大军事集团","萨拉热窝事件"],"links":["一战→凡尔赛体系"],"background":"第二次工业革命后列强实力变化，资本主义政治经济发展不平衡，殖民地与市场争夺加剧。","pitfalls":["萨拉热窝事件是导火索，不是根本原因。","一战具有帝国主义战争性质，但民族解放等局部因素要具体分析。"],"questions":["分析第一次世界大战爆发的原因和影响。"],"keywords":["政治经济发展不平衡","帝国主义","军事集团","萨拉热窝事件"]},{"side":"世界史","era":"帝国主义与世界大战","date":"1917","year":1917,"title":"俄国十月革命","importance":3,"summary":"建立世界上第一个社会主义国家，改变世界历史进程。","points":["列宁","苏维埃政权","社会主义国家"],"links":["社会主义制度实践"],"background":"俄国社会矛盾尖锐，一战加剧危机，二月革命后临时政府继续参战。","pitfalls":["二月革命推翻沙皇，十月革命推翻资产阶级临时政府。","十月革命建立世界上第一个社会主义国家。"],"questions":["分析十月革命成功的历史条件及世界影响。"],"keywords":["列宁","苏维埃","社会主义国家","世界历史进程"]},{"side":"世界史","era":"帝国主义与世界大战","date":"1919—1922","year":1919,"title":"凡尔赛—华盛顿体系","importance":3,"summary":"一战后建立新的国际秩序，但未消除帝国主义国家根本矛盾。","points":["巴黎和会","华盛顿会议","国际联盟"],"links":["一战后国际秩序→二战"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["注意把思想、制度、工业化、殖民扩张放在同一时间背景下。","比较题要抓相同背景与不同路径。"],"questions":["分析资本主义发展、思想解放或世界联系增强之间的关系。","概括事件对近代世界转型的影响。"],"keywords":["巴黎和会","华盛顿会议","国际联盟"]},{"side":"世界史","era":"危机与二战","date":"1929—1933","year":1929,"title":"资本主义经济大危机","importance":3,"summary":"危机范围广、持续久、破坏大，冲击资本主义世界。","points":["生产过剩","失业","金融危机","社会动荡"],"links":["危机→罗斯福新政/法西斯化"],"background":"生产社会化与资本主义私人占有矛盾、生产相对过剩、金融投机等问题叠加。","pitfalls":["危机从美国爆发，但迅速波及资本主义世界。","不能把危机原因简单归结为股票暴跌，股灾是爆发环节之一。"],"questions":["分析1929—1933年经济危机的特点和影响。"],"keywords":["生产过剩","失业","金融危机","社会动荡"]},{"side":"世界史","era":"危机与二战","date":"1933起","year":1933,"title":"罗斯福新政","importance":3,"summary":"通过国家干预缓解危机，开创资本主义国家宏观干预新模式。","points":["金融整顿","工业农业调整","社会保障","国家干预"],"links":["自由放任→国家干预"],"background":"经济大危机严重冲击美国经济和社会秩序，自由放任政策难以应对。","pitfalls":["新政没有改变资本主义制度。","核心特征是国家加强对经济和社会生活的干预。","新政缓解危机，但没有消除资本主义基本矛盾。"],"questions":["评价罗斯福新政。","说明罗斯福新政对资本主义经济政策的影响。"],"keywords":["国家干预","金融整顿","社会保障","资本主义调整"]},{"side":"世界史","era":"危机与二战","date":"1939—1945","year":1939,"title":"第二次世界大战","importance":3,"summary":"世界反法西斯战争改变国际力量对比，战后国际秩序重构。","points":["德国入侵波兰","苏德战争","珍珠港","世界反法西斯同盟"],"links":["二战→联合国/冷战/殖民体系瓦解"],"background":"凡尔赛—华盛顿体系矛盾、经济大危机、法西斯扩张与绥靖政策共同推动战争爆发。","pitfalls":["德国入侵波兰是欧洲战争全面爆发标志。","1941珍珠港事件后太平洋战争扩大，美国正式参战。","二战后世界力量对比和殖民体系都发生重大变化。"],"questions":["分析二战爆发原因和战后世界格局变化。"],"keywords":["法西斯扩张","绥靖政策","世界反法西斯同盟","战后秩序"]},{"side":"世界史","era":"战后世界","date":"1944—1945","year":1944,"title":"布雷顿森林体系与联合国","importance":3,"summary":"战后国际金融与安全秩序逐步建立。","points":["IMF","世界银行","美元中心","联合国"],"links":["战后国际秩序"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["注意把思想、制度、工业化、殖民扩张放在同一时间背景下。","比较题要抓相同背景与不同路径。"],"questions":["分析资本主义发展、思想解放或世界联系增强之间的关系。","概括事件对近代世界转型的影响。"],"keywords":["IMF","世界银行","美元中心","联合国"]},{"side":"世界史","era":"冷战","date":"1947","year":1947,"title":"冷战开始","importance":3,"summary":"杜鲁门主义标志美苏冷战正式开始。","points":["杜鲁门主义","马歇尔计划","德国分裂"],"links":["两极格局"],"background":"二战后美苏国家利益、意识形态和安全战略矛盾加剧。","pitfalls":["1947杜鲁门主义通常视为冷战正式开始标志。","冷战不等于美苏之间完全没有局部热战代理冲突。"],"questions":["分析冷战形成的原因及其对国际关系的影响。"],"keywords":["杜鲁门主义","马歇尔计划","美苏对峙","冷战"]},{"side":"世界史","era":"冷战","date":"1949—1955","year":1949,"title":"北约与华约","importance":3,"summary":"两大军事集团形成，两极格局正式确立。","points":["1949北约","1955华约"],"links":["冷战对峙"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["两极格局瓦解≠多极格局已经形成。","国际秩序变化通常与大国力量对比变化相关。"],"questions":["分析国际格局变化的原因和影响。","从全球化、冷战、民族解放等主线理解材料。"],"keywords":["1949北约","1955华约"]},{"side":"世界史","era":"战后世界","date":"1945—1990s","year":1960,"title":"亚非拉民族解放与殖民体系瓦解","importance":3,"summary":"二战后民族解放运动高涨，殖民体系逐步瓦解。","points":["印度独立","1960非洲年","1990纳米比亚独立"],"links":["殖民扩张→民族解放"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["两极格局瓦解≠多极格局已经形成。","国际秩序变化通常与大国力量对比变化相关。"],"questions":["分析国际格局变化的原因和影响。","从全球化、冷战、民族解放等主线理解材料。"],"keywords":["印度独立","1960非洲年","1990纳米比亚独立"]},{"side":"世界史","era":"战后世界","date":"1950s—1993","year":1957,"title":"欧洲一体化","importance":3,"summary":"欧洲从经济合作走向更深层次一体化。","points":["欧洲煤钢共同体","欧洲经济共同体","1993欧盟"],"links":["多极化趋势"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["两极格局瓦解≠多极格局已经形成。","国际秩序变化通常与大国力量对比变化相关。"],"questions":["分析国际格局变化的原因和影响。","从全球化、冷战、民族解放等主线理解材料。"],"keywords":["欧洲煤钢共同体","欧洲经济共同体","1993欧盟"]},{"side":"世界史","era":"冷战","date":"1991","year":1991,"title":"苏联解体与两极格局瓦解","importance":3,"summary":"冷战结束，两极格局瓦解，世界多极化趋势继续发展。","points":["苏联解体","冷战结束","多极化趋势"],"links":["国际格局演变"],"background":"苏联经济政治体制长期积弊、改革失控、民族问题与外部竞争共同作用。","pitfalls":["1991苏联解体标志两极格局瓦解。","两极格局瓦解后不是“多极格局已经形成”，而是多极化趋势进一步发展。"],"questions":["说明苏联解体对国际格局的影响。"],"keywords":["1991","两极格局瓦解","多极化趋势"]},{"side":"世界史","era":"当代世界","date":"20世纪末—21世纪","year":2000,"title":"经济全球化与多极化趋势","importance":3,"summary":"全球贸易、资本、科技和产业链联系加深，同时伴随不平衡与全球治理挑战。","points":["WTO","跨国公司","信息技术革命","全球产业链","全球治理"],"links":["全球化机遇与风险"],"background":"把它放回本阶段的政治、经济、社会和国际背景中理解，不要孤立背结论。","pitfalls":["两极格局瓦解≠多极格局已经形成。","国际秩序变化通常与大国力量对比变化相关。"],"questions":["分析国际格局变化的原因和影响。","从全球化、冷战、民族解放等主线理解材料。"],"keywords":["WTO","跨国公司","信息技术革命","全球产业链","全球治理"]}];
+const SYSTEMS=[{"title":"中国古代政治制度主线","desc":"西周分封宗法 → 秦皇帝/郡县 → 汉强化中央集权 → 隋唐三省六部 → 宋分割相权与地方权力 → 元行省 → 明废丞相 → 清军机处","takeaway":"总趋势：中央权力不断加强，地方权力相对削弱；皇权不断加强，相权不断削弱。"},{"title":"中国经济重心南移","desc":"魏晋南北朝江南开发 → 唐安史之乱后南移加快 → 南宋时期基本完成","takeaway":"常考原因：北方战乱、人口南迁、技术与劳动力输入、南方自然条件、相对稳定。"},{"title":"中国近代救亡探索","desc":"开眼看世界 → 洋务运动（器物）→ 戊戌/辛亥（制度）→ 新文化（思想）→ 五四 → 马克思主义传播 → 中共成立","takeaway":"核心大题：为什么探索不断深化？前一阶段道路受挫 + 民族危机加深 + 社会力量变化。"},{"title":"中国革命道路","desc":"五四 → 中共成立 → 国民革命 → 1927转折 → 井冈山道路 → 长征/遵义 → 抗日民族统一战线 → 解放战争 → 1949","takeaway":"核心：从照搬城市中心道路转向农村包围城市，逐步形成适合中国国情的革命道路。"},{"title":"中国现代化","desc":"洋务早期工业化尝试 → 民族工业发展 → 一五计划 → 社会主义建设探索 → 1978改革开放 → 1992市场经济目标 → 2001加入WTO → 当代现代化建设","takeaway":"可串联工业化、经济体制、开放程度、国家能力四个维度。"},{"title":"世界市场形成","desc":"新航路开辟（开始）→ 殖民扩张（扩大）→ 第一次工业革命（基本形成）→ 第二次工业革命（最终形成）→ 20世纪经济全球化","takeaway":"高频比较：世界联系加强与殖民掠夺、市场扩张同时发生。"},{"title":"西方思想解放","desc":"文艺复兴（人文主义）→ 宗教改革（冲击教权）→ 科学革命 → 启蒙运动（理性主义）→ 资产阶级革命与制度建设","takeaway":"思想变化与社会经济、政治制度转型互相推动。"},{"title":"国际秩序演变","desc":"一战 → 凡尔赛—华盛顿体系 → 二战 → 雅尔塔体系/联合国 → 冷战与两极格局 → 1991两极瓦解 → 多极化趋势","takeaway":"常考：国际秩序是力量对比变化的结果，并会反过来影响国际关系。"}];
+const state={side:"全部",star:0,q:"",view:"timeline"};
+const norm=s=>(s||"").toLowerCase().replace(/\s+/g,"");
+const stars=n=>"★".repeat(n)+"☆".repeat(3-n);
+const host=document.getElementById("timelineHost");
+const detail=document.getElementById("detail");
+let cards=[],searchTimer=null,lastScrollY=0;
+
+function buildTimeline(){
+ const frag=document.createDocumentFragment();
+ let lastKey="";
+ EVENTS.forEach((e,i)=>{
+   const key=e.side+"|"+e.era;
+   if(key!==lastKey){
+     const g=document.createElement("section");g.className="group";g.dataset.group=key;g.dataset.era=e.era;
+     g.innerHTML=`<div class="group-head"><h2>${e.side} · ${e.era}</h2><span class="gcount"></span></div><div class="timeline"></div>`;
+     frag.appendChild(g);lastKey=key;
+   }
+   const group=frag.lastChild.querySelector(".timeline");
+   const a=document.createElement("article");a.className="event";a.dataset.i=i;a.dataset.side=e.side;a.dataset.star=e.importance;
+   a.dataset.search=norm([e.title,e.date,e.era,e.summary,...e.points,...e.links,...e.keywords].join(" "));
+   a.innerHTML=`<div class="e-row"><div class="e-date">${e.date}</div><div class="e-title">${e.title}</div><div class="e-star">${stars(e.importance)}</div></div><div class="e-summary">${e.summary}</div><div class="chips">${e.points.slice(0,3).map(x=>`<span class="chip">${x}</span>`).join("")}</div>`;
+   group.appendChild(a);
+ });
+ host.appendChild(frag);
+ cards=[...document.querySelectorAll(".event")];
+ cards.forEach(c=>c.addEventListener("click",()=>openDetail(+c.dataset.i)));
+ applyFilter();
+}
+function applyFilter(){
+ const q=norm(state.q);let total=0;
+ cards.forEach(c=>{
+   const okSide=state.side==="全部"||c.dataset.side===state.side;
+   const okStar=!state.star||+c.dataset.star>=state.star;
+   const okQ=!q||c.dataset.search.includes(q);
+   const show=okSide&&okStar&&okQ;c.classList.toggle("hidden",!show);if(show)total++;
+ });
+ document.querySelectorAll(".group").forEach(g=>{
+   const visible=[...g.querySelectorAll(".event:not(.hidden)")].length;
+   g.classList.toggle("hidden",visible===0);g.querySelector(".gcount").textContent=visible+" 个节点";
+ });
+ if(!document.getElementById("empty")){
+   const d=document.createElement("div");d.id="empty";d.className="empty hidden";d.textContent="没有匹配结果";host.appendChild(d);
+ }
+ document.getElementById("empty").classList.toggle("hidden",total!==0);
+}
+function openDetail(i,push=true){
+ const e=EVENTS[i];if(!e)return;
+ lastScrollY=window.scrollY;
+ document.getElementById("detailStar").textContent=stars(e.importance);
+ document.getElementById("detailMain").innerHTML=`
+  <div class="d-meta">${e.side} · ${e.era} · ${e.date}</div>
+  <h2 class="d-title">${e.title}</h2>
+  <div class="d-summary">${e.summary}</div>
+  <div class="d-grid">
+   <section class="d-card fastbox full"><h3>30秒核心定位</h3><p>${e.summary}</p></section>
+   <section class="d-card"><h3>为什么发生</h3><p>${e.background}</p></section>
+   <section class="d-card"><h3>细分考点</h3><ul>${e.points.map(x=>`<li>${x}</li>`).join("")}</ul></section>
+   <section class="d-card"><h3>选择题陷阱</h3><ul>${e.pitfalls.map(x=>`<li>${x}</li>`).join("")}</ul></section>
+   <section class="d-card"><h3>材料题怎么问</h3><ul>${e.questions.map(x=>`<li>${x}</li>`).join("")}</ul></section>
+   <section class="d-card full"><h3>答题关键词</h3><div class="keyword-wrap">${e.keywords.map(x=>`<span class="keyword">${x}</span>`).join("")}</div></section>
+   <section class="d-card full"><h3>可串联时间线</h3><div class="linkline">${e.links.map(x=>`<span class="linkpill">${x}</span>`).join("")}</div></section>
+  </div>`;
+ detail.classList.add("open");detail.setAttribute("aria-hidden","false");detail.scrollTop=0;document.body.style.overflow="hidden";
+ if(push) history.pushState({event:i},"","#event-"+i);
+}
+function closeDetail(push=true){
+ detail.classList.remove("open");detail.setAttribute("aria-hidden","true");document.body.style.overflow="";
+ setTimeout(()=>window.scrollTo(0,lastScrollY),0);
+ if(push&&location.hash.startsWith("#event-"))history.pushState({},"",location.pathname+location.search);
+}
+document.getElementById("backBtn").onclick=()=>history.back();
+window.addEventListener("popstate",()=>{
+ const m=location.hash.match(/^#event-(\d+)$/);
+ if(m) openDetail(+m[1],false); else closeDetail(false);
+});
+function showView(v){
+ state.view=v;
+ document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id===v+"View"));
+ document.querySelectorAll("[data-view]").forEach(x=>x.classList.toggle("active",x.dataset.view===v));
+ document.getElementById("tools").style.display=v==="timeline"?"flex":"none";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>showView(b.dataset.view));
+document.getElementById("search").addEventListener("input",e=>{
+ state.q=e.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(applyFilter,90);
+});
+document.querySelectorAll("#sideSeg button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("#sideSeg button").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.side=b.dataset.side;applyFilter();
+});
+document.querySelectorAll("#starSeg button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("#starSeg button").forEach(x=>x.classList.remove("active"));b.classList.add("active");state.star=+b.dataset.star;applyFilter();
+});
+function buildSystems(){
+ document.getElementById("systemHost").innerHTML=SYSTEMS.map(s=>`<article class="system"><h3>${s.title}</h3><p>${s.desc}</p><p class="take">${s.takeaway}</p></article>`).join("");
+}
+function buildNav(){
+ for(const side of ["中国史","世界史"]){
+  const id=side==="中国史"?"chinaNav":"worldNav";const eras=[...new Set(EVENTS.filter(e=>e.side===side).map(e=>e.era))];
+  document.getElementById(id).innerHTML=eras.map(e=>`<button class="era-btn" data-era="${e}">${e}</button>`).join("");
+ }
+ document.querySelectorAll(".era-btn").forEach(b=>b.onclick=()=>{
+  showView("timeline");const g=[...document.querySelectorAll(".group")].find(x=>x.dataset.era===b.dataset.era&&!x.classList.contains("hidden"));
+  if(g)g.scrollIntoView({behavior:"smooth",block:"start"});
+ });
+}
+function buildCompare(){
+ const bands=[
+  ["古代世界",-9999,1399],["走向近代",1400,1759],["工业化与近代中国",1760,1913],
+  ["世界大战与中国革命",1914,1948],["冷战与新中国",1949,1977],["改革开放与全球化",1978,9999]
+ ];
+ document.getElementById("compareHost").innerHTML=bands.map(([name,a,b])=>{
+  const cn=EVENTS.filter(e=>e.side==="中国史"&&e.year>=a&&e.year<=b&&e.importance>=2).slice(0,10);
+  const wd=EVENTS.filter(e=>e.side==="世界史"&&e.year>=a&&e.year<=b&&e.importance>=2).slice(0,10);
+  const list=x=>x.map(e=>`<div class="c-item"><b>${e.title}</b><span>${e.date} · ${stars(e.importance)}</span></div>`).join("")||'<div class="c-item"><span>本阶段暂无核心节点</span></div>';
+  return `<div class="group-head"><h2>${name}</h2><span>${a<0?"古代":a+"—"+(b>9000?"现在":b)}</span></div><div class="compare-grid"><section class="compare-col"><h3>中国史</h3>${list(cn)}</section><section class="compare-col"><h3>世界史</h3>${list(wd)}</section></div>`;
+ }).join("");
+}
+function scrollProgress(){
+ const d=document.documentElement;const max=d.scrollHeight-d.clientHeight;
+ document.getElementById("progress").style.width=(max?d.scrollTop/max*100:0)+"%";
+}
+window.addEventListener("scroll",scrollProgress,{passive:true});
+document.getElementById("eventCount").textContent=EVENTS.length;
+buildTimeline();buildSystems();buildNav();buildCompare();
+const initial=location.hash.match(/^#event-(\d+)$/);if(initial)openDetail(+initial[1],false);
+</script>
+</body>
+</html>
